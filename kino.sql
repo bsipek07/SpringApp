@@ -1,0 +1,37 @@
+	CREATE TABLE Lokacija(
+		IDLokacija INT CONSTRAINT lokacija_PK PRIMARY KEY IDENTITY,
+		Naziv VARCHAR(50) NOT NULL
+	)
+
+	CREATE TABLE Dvorana(
+		IDDvorana INT CONSTRAINT dvorana_PK PRIMARY KEY IDENTITY,
+		Naziv VARCHAR(50) NOT NULL,
+		Kapacitet INT CHECK (Kapacitet BETWEEN 50 AND 250),
+		LokacijaID INT CONSTRAINT lokacija_FK FOREIGN KEY(LokacijaID) REFERENCES Lokacija (IDLokacija)
+	)
+
+	CREATE TABLE Film(
+		IDFilm INT CONSTRAINT film_PK PRIMARY KEY IDENTITY,
+		Naziv VARCHAR(50) NOT NULL,
+		Trajanje INT 
+	)
+
+	CREATE TABLE TERMIN(
+		IDTermin INT CONSTRAINT termin_PK PRIMARY KEY IDENTITY,
+		VrijemePocetka DATETIME,
+		FilmID INT CONSTRAINT film_FK FOREIGN KEY(FilmID) REFERENCES Film(IDFilm),
+		DvoranaID INT CONSTRAINT dovorana_FK FOREIGN KEY(DvoranaID) References Dvorana(IDDvorana)
+	)
+
+	CREATE TABLE Korisnik(
+		IDKorisnik INT CONSTRAINT korisnik_pk PRIMARY KEY IDENTITY,
+		Ime varchar(50) NOT NULL,
+		Prezime varchar(50) NOT NULL,
+		Email varchar(50) NOT NULL
+	)
+
+	CREATE TABLE Rezervacija(
+		IDRezervacija INT CONSTRAINT rezervacija_PK PRIMARY KEY IDENTITY,
+		KorisnikID INT CONSTRAINT korisnik_fk FOREIGN KEY(KorisnikID) REFERENCES Korisnik(IDKorisnik),
+		TerminID INT CONSTRAINT termin_FK FOREIGN KEY(TerminID) REFERENCES TERMIN(IDTermin)
+	)
