@@ -41,15 +41,9 @@ ON Racun(DatumIzdavanja)
 DROP INDEX datumi_izdavanja ON Racun
 
 
-SELECT IDRacun, DatumIzdavanja FROM Racun
-WHERE DatumIzdavanja BETWEEN '20010702' AND '20010702 23:59:59'
-
-CREATE NONCLUSTERED INDEX racun_ID ON Racun(IDRacun)
-
-
 SELECT IDRacun, DatumIzdavanja, Komentar FROM Racun
 WHERE DatumIzdavanja BETWEEN '20010702' AND '20010702 23:59:59'
 
-CREATE NONCLUSTERED INDEX komentari ON Racun(Komentar)
+CREATE NONCLUSTERED INDEX datumi_izdavanja1 ON Racun(DatumIzdavanja) INCLUDE(Komentar)
 
 DROP INDEX komentari ON Racun

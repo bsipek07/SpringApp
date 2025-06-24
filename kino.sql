@@ -33,5 +33,7 @@
 	CREATE TABLE Rezervacija(
 		IDRezervacija INT CONSTRAINT rezervacija_PK PRIMARY KEY IDENTITY,
 		KorisnikID INT CONSTRAINT korisnik_fk FOREIGN KEY(KorisnikID) REFERENCES Korisnik(IDKorisnik),
-		TerminID INT CONSTRAINT termin_FK FOREIGN KEY(TerminID) REFERENCES TERMIN(IDTermin)
+		TerminID INT CONSTRAINT termin_FK FOREIGN KEY(TerminID) REFERENCES TERMIN(IDTermin),
+		BrojUlaznica INT CHECK (BrojUlaznica BETWEEN 1 AND 5),
+		CONSTRAINT jedinstvena_rezervacija UNIQUE (KorisnikID, TerminID)
 	)
