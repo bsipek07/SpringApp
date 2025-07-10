@@ -17,3 +17,7 @@ IDUpis int CONSTRAINT upis_pk PRIMARY KEY IDENTITY,
 ProgramObrazovanjaID int CONSTRAINT programObrazovanja_fk FOREIGN KEY (ProgramObrazovanjaID) REFERENCES ProgramObrazovanja(IDProgramObrazovanja),
 PolaznikID int CONSTRAINT polaznik_fk FOREIGN KEY (PolaznikID) REFERENCES Polaznik(IDPolaznik)
 )
+
+SELECT * FROM Upis
+SELECT * FROM ProgramObrazovanja
+SELECT *FROM Polaznik
