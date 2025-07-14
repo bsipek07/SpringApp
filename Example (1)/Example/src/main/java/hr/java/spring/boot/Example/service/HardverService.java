@@ -11,7 +11,7 @@ import java.util.List;
 public interface HardverService {
     List<HardverDTO> findAll();
     HardverDTO findBySifra(String sifra);
-    Hardver save(Hardver hardver);
-    Hardver updateBySifra(String sifra,Hardver updated);
+    HardverDTO save(HardverDTO hardver);
+    HardverDTO updateBySifra(String sifra,HardverDTO updated);
     void deleteBySifra(String sifra);
 }
