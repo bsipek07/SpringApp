@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
+
 public class HardverDTO {
 
     @NotBlank(message = "Naziv ne smije biti prazan")
